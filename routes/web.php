@@ -16,3 +16,14 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+Route::get('/todolist', 'Controller@todolistIndex');
+
+
+Route::post('/todolistLogin', 'UsersController@loginTest');
+
+
+Route::post('/todolistAddTask', 'TasksController@addTask');
+
+Route::post('/readTask/{id}', 'TasksController@readTask');

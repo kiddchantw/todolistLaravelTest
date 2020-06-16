@@ -1,5 +1,5 @@
 <?php
-echo "<h1> todolist </h1>";
+echo "<h1> todolist v3</h1>";
 ?>
 
 <!DOCTYPE html>
@@ -41,7 +41,6 @@ echo "<h1> todolist </h1>";
 	<h2>About task </h2>
 	<form class="form-inline" action="{{url('/todolistAddTask')}} "method = "post">
 		{{csrf_field()}}
-
 		<input type="text"  name = "input_task">
 		<input type="submit" name="task_add" value=" add "/>
 	</form>
@@ -56,7 +55,8 @@ echo "<h1> todolist </h1>";
 			</tr>
 		</thead>
 		<tbody>
-			<?php
+
+			<?php 
 			use App\Tasks;
 			use App\Http\Controllers\TasksController;
 
@@ -65,16 +65,47 @@ echo "<h1> todolist </h1>";
 				echo "尚未登入";
 			}else{
 				$taskShow = TasksController::readTask($showUserId);
-				foreach ($taskShow as $flight) {
+
+				foreach ($taskShow as $taskObj) {
+					$taskId = $taskObj->id;
+
 					echo "<tr>";
-					echo "<td> $flight->id </td>";
-					echo "<td> $flight->content </td>";
-					echo "<td> $flight->creat_at </td>";
-					echo "<td></td>";
+					echo "<td> $taskId </td>";
+					echo "<td> $taskObj->content </td>";
+					echo "<td> $taskObj->creat_at </td>";
+					echo"<td>";
+
+
+
+					/*update & delete btn*/
+					$taskStatus = $taskObj->done;
+					// echo "<form class=\"form\" action=\"{{url('/updateTask')}}\" method = \"post\">{{csrf_field()}}<button type=\"submit\" class=\"btn btn-warning\" name=\"action\" value=\"update\"> done </button></form>";
+
+					// //{{ url('/problems/' . $problem->id . '/edit') }}
+					// // echo "<a href=\"{{ url('/updateTask/".$taskId."') }}\" class=\"btn btn-xs btn-info pull-right\">finish</a>";
+					// // echo "
+					// // <a class=\"btn btn-xs btn-info \" href=\"{{('/tasks.update', ['id' => $taskId]) }}\">
+					// //  finish
+					// //  </a>";
+					// echo "
+					// <a onclick=\"approve(666)\" class=\"btn btn-xs btn-info\">Click 
+					// </a>";
+
+					// <div class="form-group">
+     //            	<button class="btn btn-success save-data">Save</button>
+     //        		</div>
+
+					echo "<form >
+					<div class=\"form-group\">
+					<button class=\"btn btn-success btn-submit\" value=$taskId>Submit</button>
+					</div>
+					</form>";
+
+					echo"</td>";
 					echo "<td></td>";
 					echo "</tr>";
 				}
-				
+
 			}
 
 
@@ -83,8 +114,48 @@ echo "<h1> todolist </h1>";
 	</table>
 </div>
 </div>
-
-
-
 </div>
+
+
+<script type="text/javascript">
+	$.ajaxSetup({
+		headers: {
+			'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+		}
+	});
+
+	$(".btn-submit").click(function(e){
+		e.preventDefault();
+        $.ajax({
+        	type:'POST',
+        	url:"{{ route('updateTask.post') }}",  
+        	data:{
+        		taskId:this.value, 
+        		userId:<?php echo $showUserId;?> 
+        	},
+        	success:function(data){
+        		alert(data.success);
+        	}
+        });
+
+    });
+</script>
+
 </html>
+
+
+
+<!-- <script>
+ function approve(id)
+ {
+   $.ajax({
+      //some ajax call to deal with your approve link
+      type: 'post',
+            url: '/updateTask',
+            data: "id="+id,
+            success: function (data) { 
+                alert('updated');
+            }
+   });
+ }
+</script> -->

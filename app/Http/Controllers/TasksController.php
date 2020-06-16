@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Tasks;
 use Illuminate\Http\Request;
 use Session;
-
+use Log;
 
 class TasksController extends Controller
 {
@@ -43,6 +43,19 @@ class TasksController extends Controller
 	{
 		$taskShow = Tasks::where('user_id','=',$id)->get();
 		return $taskShow;
-
 	}
+
+
+
+
+	public function updateTask(
+		Request $request
+	)
+    {
+        $input = $request->all();
+        Log::info($input['taskId']);
+   		// var_dump($input);
+   		// exit();
+        return response()->json(['success'=>'Got Simple Ajax Request.']);
+    }
 }

@@ -9,7 +9,7 @@ use Session;
 
 class UsersController extends Controller
 {
-    //
+    
 	public function loginTest(Request $request)
 	{
 		switch ($request['action']) {
@@ -28,10 +28,7 @@ class UsersController extends Controller
 				echo "login 成功";
 				Session::put('resultUserId', $resultUserId);
 				Session::put('resultUserName', $loginName);
-			// $value = Session::get('resultUserName', 'noUser');
-			// var_dump($value);
 				return back();
-			// return url()->previous();
 			}else{
 				echo "login 失敗";
 			}

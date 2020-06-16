@@ -27,12 +27,7 @@ Route::post('/todolistAddTask', 'TasksController@addTask');
 
 Route::post('/readTask/{id}', 'TasksController@readTask');
 
-
-// Route::post('/updateTask', 'TasksController@updateTask');
-//'/updateTask/{id}'
-//->name('tasks.update');
-
-// Route::post('/ajax-request', 'TasksController@updateTask');
-// Route::get('ajaxRequest', 'AjaxController@ajaxRequest');
-
 Route::post('updateTask', 'TasksController@updateTask')->name('updateTask.post');
+
+
+Route::post('deleteTask', 'TasksController@deleteTask')->name('delete.post');

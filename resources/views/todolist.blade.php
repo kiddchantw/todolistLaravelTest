@@ -37,7 +37,7 @@ echo "<h1> todolist v3</h1>";
 	<br>    
 </div>
 
-<div class="container-fluid" style="background-color:#FFF8D7;">
+<div class="container-fluid" style="background-color:#FFF8D7;" id="tableDiv">
 	<h2>About task </h2>
 	<form class="form-inline" action="{{url('/todolistAddTask')}} "method = "post">
 		{{csrf_field()}}
@@ -75,34 +75,32 @@ echo "<h1> todolist v3</h1>";
 					echo "<td> $taskObj->creat_at </td>";
 					echo"<td>";
 
-
-
 					/*update & delete btn*/
 					$taskStatus = $taskObj->done;
-					// echo "<form class=\"form\" action=\"{{url('/updateTask')}}\" method = \"post\">{{csrf_field()}}<button type=\"submit\" class=\"btn btn-warning\" name=\"action\" value=\"update\"> done </button></form>";
-
-					// //{{ url('/problems/' . $problem->id . '/edit') }}
-					// // echo "<a href=\"{{ url('/updateTask/".$taskId."') }}\" class=\"btn btn-xs btn-info pull-right\">finish</a>";
-					// // echo "
-					// // <a class=\"btn btn-xs btn-info \" href=\"{{('/tasks.update', ['id' => $taskId]) }}\">
-					// //  finish
-					// //  </a>";
-					// echo "
-					// <a onclick=\"approve(666)\" class=\"btn btn-xs btn-info\">Click 
-					// </a>";
-
-					// <div class="form-group">
-     //            	<button class="btn btn-success save-data">Save</button>
-     //        		</div>
-
-					echo "<form >
-					<div class=\"form-group\">
-					<button class=\"btn btn-success btn-submit\" value=$taskId>Submit</button>
-					</div>
-					</form>";
+					//1:done / 0:unfinish 
+					if($taskStatus == 1){
+						echo "<form >
+						<div class=\"form-group\">
+						<button class=\"btn btn-secondary btn-update\" value=$taskId>重置</button>
+						</div>
+						</form>";
+					}else{
+						echo "<form >
+						<div class=\"form-group\">
+						<button class=\"btn btn-success btn-update\" value=$taskId>完成</button>
+						</div>
+						</form>";
+					}
+					
 
 					echo"</td>";
-					echo "<td></td>";
+					echo "<td>";
+					echo "<form >
+						<div class=\"form-group\">
+						<button class=\"btn btn-danger btn-delete\" value=$taskId>刪除</button>
+						</div>
+						</form>";
+					echo "</td>";
 					echo "</tr>";
 				}
 
@@ -124,38 +122,56 @@ echo "<h1> todolist v3</h1>";
 		}
 	});
 
-	$(".btn-submit").click(function(e){
+	$(".btn-update").click(function(e){
 		e.preventDefault();
-        $.ajax({
-        	type:'POST',
-        	url:"{{ route('updateTask.post') }}",  
-        	data:{
-        		taskId:this.value, 
-        		userId:<?php echo $showUserId;?> 
-        	},
-        	success:function(data){
-        		alert(data.success);
-        	}
-        });
+		$.ajax({
+			type:'POST',
+			url:"{{ route('updateTask.post') }}",  
+			data:{
+				taskId:this.value, 
+				userId:<?php echo $showUserId;?> 
+			},
+			error:function(jsonResponse){
+				// console.log(jsonResponse.status);
+				// console.log(jsonResponse.responseText);
+				alert("失敗");
+			},
+			success:function(data){
+				console.log("update success");
+				alert(data.success);
+				location.reload(true);
+			}
+		});
+	});
 
-    });
+	$(".btn-delete").click(function(e){
+		e.preventDefault();
+		$.ajax({
+			type:'POST',
+			url:"{{ route('delete.post') }}",  
+			data:{
+				taskId:this.value, 
+				userId:<?php echo $showUserId;?> 
+			},
+			error:function(jsonResponse){
+				console.log(jsonResponse.status);
+				console.log(jsonResponse.responseText);
+				alert("失敗");
+			},
+			success:function(data){
+				console.log("delete success");
+				alert(data.success);
+				location.reload(true);
+			}
+			
+		});
+
+	});
+
 </script>
 
 </html>
 
 
 
-<!-- <script>
- function approve(id)
- {
-   $.ajax({
-      //some ajax call to deal with your approve link
-      type: 'post',
-            url: '/updateTask',
-            data: "id="+id,
-            success: function (data) { 
-                alert('updated');
-            }
-   });
- }
-</script> -->
+

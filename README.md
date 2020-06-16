@@ -15,14 +15,25 @@ fetch data from controller
 
 - login 
 - logout 
+
+![](https://github.com/kiddchantw/todolistLaravelTest/blob/master/public/loginAndloginout.gif)
+
 - add tasks 
 - update taks
 - delete tasks
+
+![](https://github.com/kiddchantw/todolistLaravelTest/blob/master/public/CRUD.gif)
+
+
+
+
 
 ## Model 
 
 - users
 - tasks
+
+
     
 
 ## Restful api

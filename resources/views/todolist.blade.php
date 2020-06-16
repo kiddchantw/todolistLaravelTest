@@ -81,13 +81,13 @@ echo "<h1> todolist v3</h1>";
 					if($taskStatus == 1){
 						echo "<form >
 						<div class=\"form-group\">
-						<button class=\"btn btn-secondary btn-update\" value=$taskId>重置</button>
+						<button class=\"btn btn-secondary btn-update\" value=$taskId>reset</button>
 						</div>
 						</form>";
 					}else{
 						echo "<form >
 						<div class=\"form-group\">
-						<button class=\"btn btn-success btn-update\" value=$taskId>完成</button>
+						<button class=\"btn btn-success btn-update\" value=$taskId>done</button>
 						</div>
 						</form>";
 					}
@@ -97,16 +97,13 @@ echo "<h1> todolist v3</h1>";
 					echo "<td>";
 					echo "<form >
 						<div class=\"form-group\">
-						<button class=\"btn btn-danger btn-delete\" value=$taskId>刪除</button>
+						<button class=\"btn btn-danger btn-delete\" value=$taskId>delete</button>
 						</div>
 						</form>";
 					echo "</td>";
 					echo "</tr>";
 				}
-
 			}
-
-
 			?>
 		</tbody>
 	</table>
@@ -162,10 +159,8 @@ echo "<h1> todolist v3</h1>";
 				console.log("delete success");
 				alert(data.success);
 				location.reload(true);
-			}
-			
+			}		
 		});
-
 	});
 
 </script>

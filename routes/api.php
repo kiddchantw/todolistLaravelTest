@@ -20,13 +20,21 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 
 //寫法1 ok
-// Route::get('task', 'TaskApi@index');
-// Route::get('task/{id}', 'TaskApi@show');
-// Route::post('task', 'TaskApi@store');
-// Route::put('task/{id}', 'TaskApi@update');
-// Route::delete('task/{id}', 'TaskApi@destroy');
+Route::get('task', 'TaskApi@index');
+Route::get('task/{id}', 'TaskApi@show');
+Route::post('task', 'TaskApi@store');
+
+//原寫法
+//Route::put('task/{id}', 'TaskApi@update');
+//寫法3 Route Model Binding
+
+Route::put('task/{tasks}', 'TaskApi@update');
+
+Route::delete('task/{id}', 'TaskApi@destroy');
 
 
 
 //寫法2 ok
-Route::apiResource('task', 'TaskApi');
+// Route::apiResource('task', 'TaskApi');
+
+

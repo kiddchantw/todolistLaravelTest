@@ -57,7 +57,6 @@ class TaskApi extends Controller
                 "content" => "required|string",
             ];
             $message = [
-                // 欄位名稱.驗證方法名稱
                 "user_id.required" => "請輸入id",
                 "content.required" => "請輸入文章內容"
             ];
@@ -65,7 +64,7 @@ class TaskApi extends Controller
 
         } catch (ValidationException $exception) {
 
-            $errorMessage = $exception->validator->errors()->all();
+            $errorMessage = $exception->validator->errors()->first();
             return response()->json([
                 'message' => $errorMessage
             ], 400);
@@ -87,12 +86,15 @@ class TaskApi extends Controller
             return response()->json("add success", 201);
         } else {
             return response()->json("add 失敗", 201);
-
+        }
             //todo : 沒成功。故意用user id = 2(沒此人)
             //postmans是顯示各著Illuminate\Database\QueryException: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`dbtest001`.`tasks`, CONSTRAINT `tasks_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)) (SQL: insert into `tasks` (`content`, `creat_at`, `user_id`) values (test5566, 2020-06-16 20:25:56, 2)) in file /usr/local/var/wwwa/testLa/todolistV3/vendor/laravel/framework/src/Illuminate/Database/Connection.php on line 671
 
             // 如果已經用validator 還會有狀況嗎？
-        }
+
+            //
+
+
     }
 
     /**
@@ -103,27 +105,6 @@ class TaskApi extends Controller
      */
     public function show($id)
     {
-        // try {
-        //     $rules = [
-        //         // "user_id" 
-        //         //$id => "required|integer|exists:users,id"
-        //         'id'=>'required|unique:'
-        //     ];
-        //     $message = [
-        //         // "user_id.required" 
-        //         $id => "請輸入user id",
-        //     ];
-        //     $validResult = $request->validate($rules, $message);
-
-        // } catch (ValidationException $exception) {
-
-        //     $errorMessage = $exception->validator->errors()->all();
-        //      return response()->json([
-        //         'message' => $errorMessage
-        //     ], 404);
-        // }
-
-
         $taskShow = Tasks::where('user_id', '=', $id)->get();
         return $taskShow;
     }
@@ -135,20 +116,76 @@ class TaskApi extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    // public function update(Request $request, $id)
+    public function update(Request $request, Tasks $tasks)
     {
-        $updateTaskId = $request->taskId;
-        Log::info($updateTaskId);
-        $finshStatus = $request->taskDone; //Tasks::find($updateTaskId)->done;
-        $updateInt = 0;
-        if ($finshStatus == 0) {
-            $updateInt = 1;
-        } else {
-            $updateInt = 0;
-        }
-        Tasks::where('id', '=', $updateTaskId)->update(['done' => $updateInt]);
+        // dd($tasks);
+        // Log::info($tasks);
+        return var_dump($tasks);
+        //             $updateTaskId = $tasks->id;
 
-        return response()->json('update success');
+        // if($updateTaskId->exists()){
+        //     $updateTask = Tasks::where('id', '=', $updateTaskId);
+
+        //     $finshStatus = $tasks->done; //Tasks::find($u
+        //     $updateInt = 0;
+        //     if ($finshStatus == 0) {
+        //         $updateInt = 1;
+        //     }
+        //     $updateTask->update(['done' => $updateInt]);
+        //     return response()->json(['message' => 'update task success'], 200);
+        // }else{
+        //     return response()->json(['message' => 'update task id error'], 404);
+        // }
+
+
+
+        // try {
+        //     $rules = [
+        //         "tasksId" => "required|integer|exists:tasks,id".$this->tasks()->id,
+        //     ];
+        //     $message = [
+        //         "tasksId.required" => "請輸入taskid",
+        //     ];
+        //     $validResult = $request->validate($rules, $message);
+
+        // } catch (ValidationException $exception) {
+
+        //     $errorMessage = $exception->validator->errors()->first();
+        //     return response()->json([
+        //         'message' => $errorMessage
+        //     ], 400);
+        // }
+
+
+
+        // $updateTaskId = $request->taskId;
+        // Log::info($updateTaskId);
+        // $finshStatus = $request->taskDone; //Tasks::find($updateTaskId)->done;
+
+        // try {
+        //     $rules = [
+        //         "tasksId" => "required|integer|exists:tasks,id".$updateTaskId,
+        //         "done" => "required|integer".$finshStatus
+        //     ];
+        //     $message = [
+        //         "tasksId.required" => "請輸入taskid",
+        //         "done.required" => "請確認參數"
+        //     ];
+        //     $validResult = $request->validate($rules, $message);
+        //     dd($validResult);
+
+        // } catch (ValidationException $exception) {
+
+        //     $errorMessage = $exception->validator->errors()->first();
+        //     return response()->json([
+        //         'message' => $errorMessage
+        //     ], 400);
+        // }
+    
+        // Tasks::where('id', '=', $updateTaskId)->update(['done' => $updateInt]);
+
+        // return response()->json('update success');
     }
 
     /**
@@ -164,6 +201,8 @@ class TaskApi extends Controller
         // return response()->json(['message' => 'delete success'],204);
 
         //m2 use count() 
+        Log::info($id);
+
         $deleteTask =  Tasks::where('id', '=', $id);
         //return 
         if ($deleteTask->exists()){
@@ -173,28 +212,5 @@ class TaskApi extends Controller
             return response()->json(['message' => 'delete task id error'], 404);
         }
 
-        
-    //     if($deleteTask->exists()){
-    // // has no records                        
-    //         return "t  exist";
-    //     }else{
-    //         return "t doesn't exist";
-    //     }
-// if ($deleteTask->exist()) {
-   // user doesn't exist
-    // return "18888";
-
-// }else{
-    // return "1666";
-
-// }
-        // return var_dump($deleteTask);
-//         if($deleteTask){
-
-// //        if(!is_null($deleteTask)){
-//             //$deleteTest->delete();                      // json([ 'message' => $errorMessage     ], 400)
-//         }else{
-
-//         }    
     }
 }

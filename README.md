@@ -18,16 +18,16 @@ fetch data from controller
 
 ![](https://github.com/kiddchantw/todolistLaravelTest/blob/master/public/loginAndloginout.gif)
 
-    <details>
-    <summary> demo  </summary>
-    <!-- <pre><code> -->
 
-
-    <!-- </code></pre> -->
-    </details>
 
 ![](https://zh.wikipedia.org/wiki/Google_Lens#/media/File:Google_Lens_-_new_logo.png)
 
+
+<details>
+<summary> demo  </summary>
+![](https://github.com/kiddchantw/todolistLaravelTest/blob/master/public/loginAndloginout.gif)
+
+</details>
 
 
 - add tasks 

@@ -15,14 +15,24 @@ fetch data from controller
 
 - login 
 - logout 
+    <details>
+    <summary> demo  </summary>
+    <pre><code>
+    ![](https://github.com/kiddchantw/todolistLaravelTest/blob/master/public/loginAndloginout.gif)
+    </code></pre>
+    </details>
 
-![](https://github.com/kiddchantw/todolistLaravelTest/blob/master/public/loginAndloginout.gif)
+
 
 - add tasks 
 - update taks
 - delete tasks
-
-![](https://github.com/kiddchantw/todolistLaravelTest/blob/master/public/CRUD.gif)
+    <details>
+    <summary> demo  </summary>
+    <pre><code>
+    ![](https://github.com/kiddchantw/todolistLaravelTest/blob/master/public/CRUD.gif)
+    </code></pre>
+    </details>
 
 
 
@@ -41,11 +51,34 @@ x login
 
 x logout 
 
-x add tasks 
+x login record
 
-x update taks
+### CRUD
+- add tasks 
+    <summary> demo  </summary>
+    <pre><code>
+    
+    success & error( id error/ content error)
 
-x delete tasks
+    </code></pre>
+    </details>
+
+- update taks
+    <summary> demo  </summary>
+    <pre><code>
+    
+    success & error( id error )
+    
+    </code></pre>
+    </details>
+- delete tasks
+    <summary> demo  </summary>
+    <pre><code>
+    
+    success & error( id error )
+    
+    </code></pre>
+    </details>
 
 
 

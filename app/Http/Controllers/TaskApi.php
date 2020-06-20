@@ -83,9 +83,10 @@ class TaskApi extends Controller
         $taskAdd = Tasks::insert($data);
 
         if ($taskAdd == true) {
-            return response()->json("add success", 201);
+            return response()->json(['message' => 'add success'], 201);
+
         } else {
-            return response()->json("add 失敗", 201);
+            return response()->json(['message' => 'add 失敗'], 400);
         }
             //todo : 沒成功。故意用user id = 2(沒此人)
             //postmans是顯示各著Illuminate\Database\QueryException: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`dbtest001`.`tasks`, CONSTRAINT `tasks_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)) (SQL: insert into `tasks` (`content`, `creat_at`, `user_id`) values (test5566, 2020-06-16 20:25:56, 2)) in file /usr/local/var/wwwa/testLa/todolistV3/vendor/laravel/framework/src/Illuminate/Database/Connection.php on line 671
@@ -121,21 +122,21 @@ class TaskApi extends Controller
     {
         // dd($tasks);
         // Log::info($tasks);
-        return var_dump($tasks);
-        //             $updateTaskId = $tasks->id;
+        // return var_dump($tasks);
+        $updateTaskId = $tasks->id;
 
         // if($updateTaskId->exists()){
-        //     $updateTask = Tasks::where('id', '=', $updateTaskId);
+            $updateTask = Tasks::where('id', '=', $updateTaskId);
 
-        //     $finshStatus = $tasks->done; //Tasks::find($u
-        //     $updateInt = 0;
-        //     if ($finshStatus == 0) {
-        //         $updateInt = 1;
-        //     }
-        //     $updateTask->update(['done' => $updateInt]);
-        //     return response()->json(['message' => 'update task success'], 200);
+            $finshStatus = $tasks->done; //Tasks::find($u
+            $updateInt = 0;
+            if ($finshStatus == 0) {
+                $updateInt = 1;
+            }
+            $updateTask->update(['done' => $updateInt]);
+            return response()->json(['message' => 'update task success'], 200);
         // }else{
-        //     return response()->json(['message' => 'update task id error'], 404);
+            // return response()->json(['message' => 'update task id error'], 404);
         // }
 
 

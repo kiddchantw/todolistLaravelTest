@@ -15,14 +15,18 @@ fetch data from controller
 
 - login 
 - logout 
+
+![](https://github.com/kiddchantw/todolistLaravelTest/blob/master/public/loginAndloginout.gif)
+
     <details>
     <summary> demo  </summary>
     <!-- <pre><code> -->
-    ![](https://github.com/kiddchantw/todolistLaravelTest/blob/master/public/loginAndloginout.gif)
 
-    ![test](https://zh.wikipedia.org/wiki/Google_Lens#/media/File:Google_Lens_-_new_logo.png)
+
     <!-- </code></pre> -->
     </details>
+
+![](https://zh.wikipedia.org/wiki/Google_Lens#/media/File:Google_Lens_-_new_logo.png)
 
 
 

@@ -1,6 +1,7 @@
 # Todolist 
 use laravel to make a todolist project
 
+: toc :
 
 
 ## local database 
@@ -16,29 +17,29 @@ fetch data from controller
 - login 
 - logout 
 
-![](https://github.com/kiddchantw/todolistLaravelTest/blob/master/public/loginAndloginout.gif)
+    <details>
+    <summary> demo  </summary>
+    <pre><code>
 
+    ![image](https://github.com/kiddchantw/todolistLaravelTest/blob/master/public/loginAndloginout.gif?raw=true)
 
-
-![](https://zh.wikipedia.org/wiki/Google_Lens#/media/File:Google_Lens_-_new_logo.png)
-
-
-<details>
-<summary> demo  </summary>
-![](https://github.com/kiddchantw/todolistLaravelTest/blob/master/public/loginAndloginout.gif)
-
-</details>
+    </code></pre>   
+    </details>
 
 
 - add tasks 
 - update taks
 - delete tasks
+
     <details>
     <summary> demo  </summary>
     <pre><code>
-    ![](https://github.com/kiddchantw/todolistLaravelTest/blob/master/public/CRUD.gif)
-    </code></pre>
-    </details>
+
+    ![image](https://github.com/kiddchantw/todolistLaravelTest/blob/master/public/CRUD.gif?raw=true)
+
+    </code></pre>   
+    </details>    
+
 
 
 
@@ -61,30 +62,58 @@ x login record
 
 ### CRUD
 - add tasks 
+
+    <details>
     <summary> demo  </summary>
     <pre><code>
-    
+
     success & error( id error/ content error)
 
-    </code></pre>
-    </details>
+    ![image](https://github.com/kiddchantw/todolistLaravelTest/blob/master/public/C.gif?raw=true)
+
+    </code></pre>   
+    </details>    
+
+
 
 - update taks
+
+    <details>
     <summary> demo  </summary>
     <pre><code>
-    
+
     success & error( id error )
-    
-    </code></pre>
-    </details>
+
+    ![image](https://github.com/kiddchantw/todolistLaravelTest/blob/master/public/u.gif?raw=true)
+
+    </code></pre>   
+    </details>        
+
 - delete tasks
+
+    <details>
     <summary> demo  </summary>
     <pre><code>
-    
+
     success & error( id error )
-    
-    </code></pre>
-    </details>
+
+    ![image](https://github.com/kiddchantw/todolistLaravelTest/blob/master/public/d.gif?raw=true)
+
+    </code></pre>   
+    </details>  
+
+
+
+
+# working area
+
+x login  api 
+
+x logout  api 
+
+x login record api 
+
+x API doc
 
 
 

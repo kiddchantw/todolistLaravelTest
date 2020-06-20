@@ -17,9 +17,11 @@ fetch data from controller
 - logout 
     <details>
     <summary> demo  </summary>
-    <pre><code>
+    <!-- <pre><code> -->
     ![](https://github.com/kiddchantw/todolistLaravelTest/blob/master/public/loginAndloginout.gif)
-    </code></pre>
+
+    ![test](https://zh.wikipedia.org/wiki/Google_Lens#/media/File:Google_Lens_-_new_logo.png)
+    <!-- </code></pre> -->
     </details>
 
 

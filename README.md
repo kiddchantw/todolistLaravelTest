@@ -1,8 +1,6 @@
 # Todolist 
 use laravel to make a todolist project
 
-: toc :
-
 
 ## local database 
 
@@ -14,11 +12,15 @@ fetch data from controller
 
 ## Controller 
 
+
+
+
 - login 
+
 - logout 
 
     <details>
-    <summary> demo  </summary>
+    <summary> demo gif </summary>
     <pre><code>
 
     ![image](https://github.com/kiddchantw/todolistLaravelTest/blob/master/public/loginAndloginout.gif?raw=true)
@@ -32,7 +34,7 @@ fetch data from controller
 - delete tasks
 
     <details>
-    <summary> demo  </summary>
+    <summary> demo gif </summary>
     <pre><code>
 
     ![image](https://github.com/kiddchantw/todolistLaravelTest/blob/master/public/CRUD.gif?raw=true)
@@ -64,7 +66,7 @@ x login record
 - add tasks 
 
     <details>
-    <summary> demo  </summary>
+    <summary> demo gif </summary>
     <pre><code>
 
     success & error( id error/ content error)
@@ -79,7 +81,7 @@ x login record
 - update taks
 
     <details>
-    <summary> demo  </summary>
+    <summary> demo gif </summary>
     <pre><code>
 
     success & error( id error )
@@ -92,7 +94,7 @@ x login record
 - delete tasks
 
     <details>
-    <summary> demo  </summary>
+    <summary> demo gif </summary>
     <pre><code>
 
     success & error( id error )

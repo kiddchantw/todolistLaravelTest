@@ -120,73 +120,22 @@ class TaskApi extends Controller
     // public function update(Request $request, $id)
     public function update(Request $request, Tasks $tasks)
     {
-        // dd($tasks);
-        // Log::info($tasks);
-        // return var_dump($tasks);
+      
         $updateTaskId = $tasks->id;
 
-        // if($updateTaskId->exists()){
-            $updateTask = Tasks::where('id', '=', $updateTaskId);
+        $updateTask = Tasks::where('id', '=', $updateTaskId);
 
-            $finshStatus = $tasks->done; //Tasks::find($u
-            $updateInt = 0;
-            if ($finshStatus == 0) {
+        $finshStatus = $tasks->done; //Tasks::find($u
+        $updateInt = 0;
+        if ($finshStatus == 0) {
                 $updateInt = 1;
-            }
-            $updateTask->update(['done' => $updateInt]);
-            return response()->json(['message' => 'update task success'], 200);
-        // }else{
-            // return response()->json(['message' => 'update task id error'], 404);
-        // }
+        }
+        $updateTask->update(['done' => $updateInt]);
+        
+        return response()->json(['message' => 'update task success'], 200);
 
-
-
-        // try {
-        //     $rules = [
-        //         "tasksId" => "required|integer|exists:tasks,id".$this->tasks()->id,
-        //     ];
-        //     $message = [
-        //         "tasksId.required" => "請輸入taskid",
-        //     ];
-        //     $validResult = $request->validate($rules, $message);
-
-        // } catch (ValidationException $exception) {
-
-        //     $errorMessage = $exception->validator->errors()->first();
-        //     return response()->json([
-        //         'message' => $errorMessage
-        //     ], 400);
-        // }
-
-
-
-        // $updateTaskId = $request->taskId;
-        // Log::info($updateTaskId);
-        // $finshStatus = $request->taskDone; //Tasks::find($updateTaskId)->done;
-
-        // try {
-        //     $rules = [
-        //         "tasksId" => "required|integer|exists:tasks,id".$updateTaskId,
-        //         "done" => "required|integer".$finshStatus
-        //     ];
-        //     $message = [
-        //         "tasksId.required" => "請輸入taskid",
-        //         "done.required" => "請確認參數"
-        //     ];
-        //     $validResult = $request->validate($rules, $message);
-        //     dd($validResult);
-
-        // } catch (ValidationException $exception) {
-
-        //     $errorMessage = $exception->validator->errors()->first();
-        //     return response()->json([
-        //         'message' => $errorMessage
-        //     ], 400);
-        // }
-    
-        // Tasks::where('id', '=', $updateTaskId)->update(['done' => $updateInt]);
-
-        // return response()->json('update success');
+        //目前只想到找不到model id的例外狀況
+        //用app/Exceptions/Handler.php處理了
     }
 
     /**
@@ -197,11 +146,6 @@ class TaskApi extends Controller
      */
     public function destroy($id)
     {
-        //m1 ok but status 204  no content
-        //Tasks::where('id', '=', $id)->delete();
-        // return response()->json(['message' => 'delete success'],204);
-
-        //m2 use count() 
         Log::info($id);
 
         $deleteTask =  Tasks::where('id', '=', $id);

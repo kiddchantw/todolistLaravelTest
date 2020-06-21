@@ -56,11 +56,17 @@ fetch data from controller
     
 
 ## Restful api
-x login 
 
-x logout 
+- API doc
+    <details>
+    <summary> demo screen shot  </summary>
+    <pre><code>
 
-x login record
+    ![image](https://github.com/kiddchantw/todolistLaravelTest/blob/master/public/apidocImg.png?raw=true)
+
+    </code></pre>   
+    </details>    
+
 
 ### CRUD
 - add tasks 
@@ -115,7 +121,7 @@ x logout  api
 
 x login record api 
 
-x API doc
+
 
 
 

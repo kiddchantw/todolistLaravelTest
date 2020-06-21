@@ -2,17 +2,17 @@
     "variables": [],
     "info": {
         "name": "Laravel API",
-        "_postman_id": "862144b3-8c87-4509-8774-23843d63b50d",
+        "_postman_id": "a0887ed5-1742-4572-be9e-0c73ca4706ff",
         "description": "",
         "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.0.0\/collection.json"
     },
     "item": [
         {
-            "name": "general",
-            "description": "",
+            "name": "TaskCRUD",
+            "description": "\ntask\u7684\u6240\u6709\u64cd\u4f5c",
             "item": [
                 {
-                    "name": "Display a listing of the resource.",
+                    "name": "showAllTasks API\nDisplay a listing of the resource.",
                     "request": {
                         "url": {
                             "protocol": "http",
@@ -40,13 +40,20 @@
                     }
                 },
                 {
-                    "name": "Display the specified resource.",
+                    "name": "showOneUsersTask\nDisplay the specified resource.",
                     "request": {
                         "url": {
                             "protocol": "http",
                             "host": "localhost",
                             "path": "api\/task\/:id",
-                            "query": []
+                            "query": [
+                                {
+                                    "key": "id",
+                                    "value": "voluptatem",
+                                    "description": "\u5df2\u5b58\u5728\u7684user id.",
+                                    "disabled": false
+                                }
+                            ]
                         },
                         "method": "GET",
                         "header": [
@@ -68,7 +75,7 @@
                     }
                 },
                 {
-                    "name": "Store a newly created resource in storage.",
+                    "name": "AddNewTask API\nStore a newly created resource in storage.",
                     "request": {
                         "url": {
                             "protocol": "http",
@@ -89,20 +96,27 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "[]"
+                            "raw": "{\n    \"user_id\": 9,\n    \"content\": \"test123\"\n}"
                         },
                         "description": "",
                         "response": []
                     }
                 },
                 {
-                    "name": "Update the specified resource in storage.",
+                    "name": "updateTask API\nUpdate the specified resource in storage",
                     "request": {
                         "url": {
                             "protocol": "http",
                             "host": "localhost",
                             "path": "api\/task\/:tasks",
-                            "query": []
+                            "query": [
+                                {
+                                    "key": "id",
+                                    "value": "quia",
+                                    "description": "\u5df2\u5b58\u5728\u7684task id.",
+                                    "disabled": false
+                                }
+                            ]
                         },
                         "method": "PUT",
                         "header": [
@@ -124,13 +138,21 @@
                     }
                 },
                 {
-                    "name": "Remove the specified resource from storage.",
+                    "name": "deleteTask API\nRemove the specified resource from storage.",
                     "request": {
                         "url": {
                             "protocol": "http",
                             "host": "localhost",
                             "path": "api\/task\/:id",
-                            "query": []
+                            "query": [],
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "voluptatibus",
+                                    "description": "\u5df2\u5b58\u5728\u7684task id."
+                                }
+                            ]
                         },
                         "method": "DELETE",
                         "header": [
@@ -151,6 +173,75 @@
                         "response": []
                     }
                 },
+                {
+                    "name": "showAllTasks API\nDisplay a listing of the resource.",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "localhost",
+                            "path": "todolist\/task",
+                            "query": []
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "[]"
+                        },
+                        "description": "",
+                        "response": []
+                    }
+                },
+                {
+                    "name": "showOneUsersTask\nDisplay the specified resource.",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "localhost",
+                            "path": "todolist\/task\/:id",
+                            "query": [
+                                {
+                                    "key": "id",
+                                    "value": "sed",
+                                    "description": "\u5df2\u5b58\u5728\u7684user id.",
+                                    "disabled": false
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "[]"
+                        },
+                        "description": "",
+                        "response": []
+                    }
+                }
+            ]
+        },
+        {
+            "name": "general",
+            "description": "",
+            "item": [
                 {
                     "name": "todolist",
                     "request": {
@@ -301,62 +392,6 @@
                             "query": []
                         },
                         "method": "POST",
-                        "header": [
-                            {
-                                "key": "Content-Type",
-                                "value": "application\/json"
-                            },
-                            {
-                                "key": "Accept",
-                                "value": "application\/json"
-                            }
-                        ],
-                        "body": {
-                            "mode": "raw",
-                            "raw": "[]"
-                        },
-                        "description": "",
-                        "response": []
-                    }
-                },
-                {
-                    "name": "Display a listing of the resource.",
-                    "request": {
-                        "url": {
-                            "protocol": "http",
-                            "host": "localhost",
-                            "path": "todolist\/task",
-                            "query": []
-                        },
-                        "method": "GET",
-                        "header": [
-                            {
-                                "key": "Content-Type",
-                                "value": "application\/json"
-                            },
-                            {
-                                "key": "Accept",
-                                "value": "application\/json"
-                            }
-                        ],
-                        "body": {
-                            "mode": "raw",
-                            "raw": "[]"
-                        },
-                        "description": "",
-                        "response": []
-                    }
-                },
-                {
-                    "name": "Display the specified resource.",
-                    "request": {
-                        "url": {
-                            "protocol": "http",
-                            "host": "localhost",
-                            "path": "todolist\/task\/:id",
-                            "query": []
-                        },
-                        "method": "GET",
                         "header": [
                             {
                                 "key": "Content-Type",

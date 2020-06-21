@@ -3,19 +3,22 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Validator;
-// use Illuminate\Foundation\Validation\ValidationException;
-
 use Illuminate\Http\Request;
 use App\Tasks;
 use Session;
 use Log;
-
-
 use Illuminate\Validation\ValidationException;
+
+/**
+ * @group TaskCRUD
+ * 
+ * task的所有操作
+ */
 
 class TaskApi extends Controller
 {
     /**
+     * showAllTasks API
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -29,7 +32,18 @@ class TaskApi extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * AddNewTask API
+     * Store a newly created resource in storage. 
+     * 
+     * @bodyParam  user_id int required The id of the user . Example: 9
+     * @bodyParam content string required task 內容 . Example: test123
+     *
+     * @response {
+     *   "message": "AddNewTask success" 
+     * }
+     * @response  400 {
+     *  "message": "AddNewTask error with reason "
+     * }
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
@@ -99,7 +113,10 @@ class TaskApi extends Controller
     }
 
     /**
+     * showOneUsersTask
      * Display the specified resource.
+     * 
+     * @queryParam id required 已存在的user id.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
@@ -111,7 +128,16 @@ class TaskApi extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * updateTask API
+     * Update the specified resource in storage
+     *
+     * @queryParam id required 已存在的task id.
+     * @response {
+     *   "message": "update task success" 
+     * }
+     * @response  404 {
+     *  "message": "updateTask id error"
+     * }
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
@@ -120,7 +146,7 @@ class TaskApi extends Controller
     // public function update(Request $request, $id)
     public function update(Request $request, Tasks $tasks)
     {
-      
+
         $updateTaskId = $tasks->id;
 
         $updateTask = Tasks::where('id', '=', $updateTaskId);
@@ -128,7 +154,7 @@ class TaskApi extends Controller
         $finshStatus = $tasks->done; //Tasks::find($u
         $updateInt = 0;
         if ($finshStatus == 0) {
-                $updateInt = 1;
+            $updateInt = 1;
         }
         $updateTask->update(['done' => $updateInt]);
         
@@ -139,8 +165,17 @@ class TaskApi extends Controller
     }
 
     /**
+     * deleteTask API
      * Remove the specified resource from storage.
      *
+     * @urlParam  id required 已存在的task id.
+     *
+     * @response {
+     *   "message": "delete task id success" 
+     * }
+     * @response  404 {
+     *  "message": "delete task id error"
+     * }
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */

@@ -25,9 +25,8 @@ class TaskApi extends Controller
      */
     public function index()
     {
-        //
-        // $taskShow = Tasks::all();
-        // echo  $taskShow;
+        $this->customLog("showAllUserTask",__METHOD__," all task ");
+
         echo  Tasks::all();
     }
 
@@ -121,11 +120,18 @@ class TaskApi extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
+
     public function show($id)
     {
+        $this->customLog("showOneUserTask",__METHOD__,"userID: $id");
+
         $taskShow = Tasks::where('user_id', '=', $id)->get();
         return $taskShow;
     }
+
+
+
 
     /**
      * updateTask API
@@ -192,5 +198,19 @@ class TaskApi extends Controller
             return response()->json(['message' => 'delete task id error'], 404);
         }
 
+    }
+
+
+
+
+    public function customLog(
+        string $actions,
+        string $methods,
+        string $details
+    ){
+        $dateNowTaiwan = date('Y-m-d H:i:s', (time()+8*3600));
+        $action = $actions;
+        $log = ['method: '=>$methods, 'details:'=>$details,'time'=>$dateNowTaiwan]; 
+        Log::notice($action, $log);
     }
 }

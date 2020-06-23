@@ -209,8 +209,8 @@ class TaskApi extends Controller
         string $details
     ){
         $dateNowTaiwan = date('Y-m-d H:i:s', (time()+8*3600));
-        $action = $actions;
+        // $action = $actions;
         $log = ['method: '=>$methods, 'details:'=>$details,'time'=>$dateNowTaiwan]; 
-        Log::notice($action, $log);
+        Log::notice($actions, $log);
     }
 }

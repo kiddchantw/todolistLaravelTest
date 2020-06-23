@@ -37,8 +37,8 @@ return [
     'channels' => [
         'stack' => [
             'driver' => 'stack',
-            'channels' => ['daily'],    //每一天log
-            // 'channels' => ['single'],  //單一log
+            // 'channels' => ['daily'],    //每一天log
+            'channels' => ['single'],  //單一log
             'ignore_exceptions' => false,
         ],
 

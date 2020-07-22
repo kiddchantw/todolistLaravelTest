@@ -28,7 +28,7 @@ class TasksController extends Controller
 				array(
 					'user_id'=> $addTaskuserId,
 					'content'=> $taskContent,
-					'creat_at'=> date("Y-m-d H:i:s",(time()+8*3600))
+					'created_at'=> date("Y-m-d H:i:s",(time()+8*3600))
 				)
 			);
 			Tasks::insert($data); // Eloquent approach
@@ -59,7 +59,7 @@ class TasksController extends Controller
 		}
 		Tasks::where('id','=',$updateTaskId)->update(['done'=>$updateInt]);
 
-		return response()->json(['success'=>'Got Simple Ajax Request']);
+		return response()->json(['success'=>'Ajax Request: updateTask']);
 	}
 
 
@@ -71,8 +71,7 @@ class TasksController extends Controller
 		Log::info($deleteTaskId);
 		$deteleTest = Tasks::where('id','=',$deleteTaskId)->delete();
 		// dd($deteleTest);
-		return response(['success'=>$deteleTest],200);
-		//return $deteleTest;
-		//response()->json(['success'=>'Got Simple Ajax Request 2.']);
+		// return response(['success'=>$deteleTest],200);
+		response()->json(['success'=>'Got Simple Ajax Request 2: deleteTask']);
 	}
 }

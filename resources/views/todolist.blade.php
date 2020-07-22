@@ -33,6 +33,8 @@ echo "<h1> todolist v3</h1>";
 
 		<button type="submit" class="btn btn-warning" name="action" value="login2"> Login </button>
 		<button type="submit" class="btn btn-info" name="action" value="loginout2"> Logout </button>
+		<button type="submit" class="btn btn-default" name="action" value="register"> register </button>
+
 	</form>
 	<br>    
 </div>
@@ -72,7 +74,7 @@ echo "<h1> todolist v3</h1>";
 					echo "<tr>";
 					echo "<td> $taskId </td>";
 					echo "<td> $taskObj->content </td>";
-					echo "<td> $taskObj->creat_at </td>";
+					echo "<td> $taskObj->created_at </td>";
 					echo"<td>";
 
 					/*update & delete btn*/

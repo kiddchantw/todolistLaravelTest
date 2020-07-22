@@ -6,8 +6,8 @@ use App\Tasks;
 use Illuminate\Http\Request;
 use Session;
 use Log;
-use App\Http\Requests;
-use App\Http\Requests\Request;
+// use App\Http\Requests;
+// use App\Http\Requests\Request;
 
 class TasksController extends Controller
 {

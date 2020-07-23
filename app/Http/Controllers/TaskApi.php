@@ -88,7 +88,7 @@ class TaskApi extends Controller
             array(
                 'user_id' => $request->user_id,
                 'content' => $request->content,
-                'creat_at' => date("Y-m-d H:i:s", (time() + 8 * 3600))
+                'created_at' => date("Y-m-d H:i:s", (time() + 8 * 3600))
             )
         );
         Log::info($data);

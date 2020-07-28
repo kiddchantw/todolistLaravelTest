@@ -66,4 +66,14 @@ class LoginController extends Controller
 
         return response()->json(['message' => $response], 200);
     }
+
+
+    public function logout()
+    {
+        if (Auth::check()) {
+            dd("1");
+        } else {
+            dd("2");
+        }
+    }
 }

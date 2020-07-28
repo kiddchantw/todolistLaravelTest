@@ -26,7 +26,11 @@ class UsersController extends Controller
 			case 'register':
 				$user = new Users;
 				$user->name = $loginName;
-				$user->password = $loginPassword;
+				// $user->password = $loginPassword;
+				//$resultUserPW = Hash::make($resultLoginInfo->password);
+				$user->password = Hash::make($loginPassword);
+
+
 				$user->save();
 
 				$resultLoginInfo = Users::where('name', $loginName)->first();
@@ -39,36 +43,26 @@ class UsersController extends Controller
 
 			case 'login2':
 
-
-				$credentials = array(
-					'name' => $loginName,
-					'password' => $loginPassword,
-				);
-				// var_dump($credentials);
-
-				if (Auth::attempt($credentials)) {
-					// dd(Auth::user());
-				} else {
-					dd("error");
-				}
-
-
-
-				// $loginName = (string)$request->input("input_name");
 				$loginName = $request->input_name;
 				$loginPassword = $request->input("input_password");
 
 				$resultLoginInfo = Users::where('name', $loginName)->first();
-
 				$resultUserId = $resultLoginInfo->id;
 				$resultUserPW = $resultLoginInfo->password;
-				// $resultUserPW = $resultLoginInfo->password ;
-				// if ($resultUserId > 3) {
-				// 	$resultUserPW = Hash::make($resultLoginInfo->password);
-				// 	// dd($resultUserPW);
-				// }
 
-				if ($resultUserPW == $loginPassword) {
+				//等reset pw寫好再改這隻
+				$conditionK = false;
+				if ($resultUserId >= 4) {
+
+					$conditionK = Hash::check($loginPassword, $resultUserPW);
+				} else {
+					if ($resultUserPW == $loginPassword) {
+						$conditionK = true;
+					}
+				}
+				//
+
+				if ($conditionK) {
 					echo "login 成功";
 
 					do {

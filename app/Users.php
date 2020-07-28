@@ -3,9 +3,25 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Hash;
 
-class Users extends Model
+
+use Illuminate\Foundation\Auth\User as Authenticatable;
+
+// class Users extends Model
+class Users extends Authenticatable
 {
     //
-	protected $table = 'users';
+    protected $table = 'users';
+    
+
+
+    //Eloquent: Mutators
+    public function setPasswordAttribute($password)
+    {
+        if ( $password !== null & $password !== "" )
+        {
+            $this->attributes['password'] = Hash::make($password);
+        }
+    }
 }

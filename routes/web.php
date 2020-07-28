@@ -32,3 +32,7 @@ Route::post('deleteTask', 'TasksController@deleteTask')->name('delete.post');
 Route::get('/todolist/task', 'TaskApi@index');
 Route::get('/todolist/task/{id}', 'TaskApi@show');
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

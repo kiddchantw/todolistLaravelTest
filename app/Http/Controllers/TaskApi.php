@@ -6,7 +6,8 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use App\Tasks;
 use Session;
-use Log;
+use Illuminate\Support\Facades\Log;
+
 use Illuminate\Validation\ValidationException;
 
 /**

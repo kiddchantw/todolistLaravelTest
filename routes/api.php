@@ -19,12 +19,11 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 
-
-
-//
-Route::post('login', 'Auth\LoginController@login');
-Route::post('register', 'Auth\RegisterController@register');
-Route::post('logout', 'Auth\LoginController@logout');
+Route::middleware(['apiLog'])->group(function () {
+    Route::post('login', 'Auth\LoginController@login');
+    Route::post('register', 'Auth\RegisterController@register');
+    Route::post('logout', 'Auth\LoginController@logout');
+});
 
 
 
@@ -37,7 +36,3 @@ Route::post('task', 'TaskApi@store');
 Route::put('task/{tasks}', 'TaskApi@update');
 
 Route::delete('task/{id}', 'TaskApi@destroy');
-
-
-
-

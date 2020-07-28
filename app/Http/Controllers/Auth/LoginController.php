@@ -13,6 +13,12 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 
 
+/**
+ * @group user Login 
+ * 
+ * auth的所有操作
+ */
+
 class LoginController extends Controller
 {
     /*
@@ -45,7 +51,16 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
-
+     /**
+     * login API
+     * 登入. 
+     * 
+     * @bodyParam  name string required.
+     * @bodyParam password string required.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
     public function login(Request $request)
     {
         $credentials = $request->only('name', 'password');
@@ -85,12 +100,32 @@ class LoginController extends Controller
         return response()->json(['message' => "logout success!"], 200);
     }
 
+
+     /**
+     * show API
+     * 顯示個人資料. 
+     * 
+     * @bodyParam remember_token string required.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
     public function show(Request $request)
     {
         # code...
         return $request->user();
     }
 
+    /**
+     * resetPassword API
+     * 重設密碼. 
+     * 
+     * @bodyParam  reset_password string required.
+     * @bodyParam remember_token string required.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
 
     public function resetPassword (Request $request)
     {

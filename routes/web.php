@@ -29,10 +29,10 @@ Route::post('deleteTask', 'TasksController@deleteTask')->name('delete.post');
 
 
 //api的移動到 api.php
-Route::get('/todolist/task', 'TaskApi@index');
-Route::get('/todolist/task/{id}', 'TaskApi@show');
+// Route::get('/todolist/task', 'TaskApi@index');
+// Route::get('/todolist/task/{id}', 'TaskApi@show');
 
 
-Auth::routes();
+// Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

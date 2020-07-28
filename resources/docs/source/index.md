@@ -71,7 +71,7 @@ Display the specified resource.
 
 ```bash
 curl -X GET \
-    -G "http://localhost/api/task/1?id=voluptatem" \
+    -G "http://localhost/api/task/1?id=dolore" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json"
 ```
@@ -82,7 +82,7 @@ const url = new URL(
 );
 
 let params = {
-    "id": "voluptatem",
+    "id": "dolore",
 };
 Object.keys(params)
     .forEach(key => url.searchParams.append(key, params[key]));
@@ -106,27 +106,19 @@ fetch(url, {
 ```json
 [
     {
-        "id": 56,
+        "id": 1,
         "user_id": 1,
-        "content": "test5566",
-        "creat_at": "2020-06-16 20:23:58",
+        "content": "123123",
         "done": 0,
-        "updated_at": "2020-06-20T03:15:22.000000Z"
-    },
-    {
-        "id": 61,
-        "user_id": 1,
-        "content": "test123123",
-        "creat_at": "2020-06-20 11:05:37",
-        "done": 0,
+        "created_at": "2020-07-22T17:49:53.000000Z",
         "updated_at": null
     },
     {
-        "id": 62,
+        "id": 4,
         "user_id": 1,
-        "content": "test2333123",
-        "creat_at": "2020-06-20 11:09:30",
+        "content": "aasdsadsad",
         "done": 0,
+        "created_at": "2020-07-23T09:54:35.000000Z",
         "updated_at": null
     }
 ]
@@ -217,7 +209,7 @@ Update the specified resource in storage
 
 ```bash
 curl -X PUT \
-    "http://localhost/api/task/1?id=quia" \
+    "http://localhost/api/task/1?id=amet" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json"
 ```
@@ -228,7 +220,7 @@ const url = new URL(
 );
 
 let params = {
-    "id": "quia",
+    "id": "amet",
 };
 Object.keys(params)
     .forEach(key => url.searchParams.append(key, params[key]));
@@ -281,14 +273,14 @@ Remove the specified resource from storage.
 
 ```bash
 curl -X DELETE \
-    "http://localhost/api/task/voluptatibus" \
+    "http://localhost/api/task/et" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json"
 ```
 
 ```javascript
 const url = new URL(
-    "http://localhost/api/task/voluptatibus"
+    "http://localhost/api/task/et"
 );
 
 let headers = {
@@ -331,127 +323,46 @@ Parameter | Status | Description
 
 <!-- END_25a8fb2e78fed99d60643f791e3631b2 -->
 
-<!-- START_c7ca57253852695f4a2a4612a7dc358f -->
-## showAllTasks API
-Display a listing of the resource.
-
-> Example request:
-
-```bash
-curl -X GET \
-    -G "http://localhost/todolist/task" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost/todolist/task"
-);
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-};
-
-fetch(url, {
-    method: "GET",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-
-### HTTP Request
-`GET todolist/task`
-
-
-<!-- END_c7ca57253852695f4a2a4612a7dc358f -->
-
-<!-- START_d78d3be72c4e4d3341ea07a90f55312a -->
-## showOneUsersTask
-Display the specified resource.
-
-> Example request:
-
-```bash
-curl -X GET \
-    -G "http://localhost/todolist/task/1?id=sed" \
-    -H "Content-Type: application/json" \
-    -H "Accept: application/json"
-```
-
-```javascript
-const url = new URL(
-    "http://localhost/todolist/task/1"
-);
-
-let params = {
-    "id": "sed",
-};
-Object.keys(params)
-    .forEach(key => url.searchParams.append(key, params[key]));
-
-let headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-};
-
-fetch(url, {
-    method: "GET",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-> Example response (200):
-
-```json
-[
-    {
-        "id": 56,
-        "user_id": 1,
-        "content": "test5566",
-        "creat_at": "2020-06-16 20:23:58",
-        "done": 0,
-        "updated_at": "2020-06-20T03:15:22.000000Z"
-    },
-    {
-        "id": 61,
-        "user_id": 1,
-        "content": "test123123",
-        "creat_at": "2020-06-20 11:05:37",
-        "done": 0,
-        "updated_at": null
-    },
-    {
-        "id": 62,
-        "user_id": 1,
-        "content": "test2333123",
-        "creat_at": "2020-06-20 11:09:30",
-        "done": 0,
-        "updated_at": null
-    }
-]
-```
-
-### HTTP Request
-`GET todolist/task/{id}`
-
-#### Query Parameters
-
-Parameter | Status | Description
---------- | ------- | ------- | -----------
-    `id` |  required  | 已存在的user id.
-
-<!-- END_d78d3be72c4e4d3341ea07a90f55312a -->
-
 #general
 
+
+<!-- START_d7b7952e7fdddc07c978c9bdaf757acf -->
+## Create a new user instance after a valid registration.
+
+> Example request:
+
+```bash
+curl -X POST \
+    "http://localhost/api/register" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json"
+```
+
+```javascript
+const url = new URL(
+    "http://localhost/api/register"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+
+
+### HTTP Request
+`POST api/register`
+
+
+<!-- END_d7b7952e7fdddc07c978c9bdaf757acf -->
 
 <!-- START_816ea41c5f160527eabf0bcdebcaf494 -->
 ## todolist
@@ -679,5 +590,208 @@ fetch(url, {
 
 
 <!-- END_67ddb64fcc1692106969f28eb4bfec34 -->
+
+<!-- START_cb859c8e84c35d7133b6a6c8eac253f8 -->
+## Show the application dashboard.
+
+> Example request:
+
+```bash
+curl -X GET \
+    -G "http://localhost/home" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json"
+```
+
+```javascript
+const url = new URL(
+    "http://localhost/home"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+
+> Example response (401):
+
+```json
+{
+    "message": "Unauthenticated."
+}
+```
+
+### HTTP Request
+`GET home`
+
+
+<!-- END_cb859c8e84c35d7133b6a6c8eac253f8 -->
+
+#user Login 
+
+
+auth的所有操作
+<!-- START_c3fa189a6c95ca36ad6ac4791a873d23 -->
+## login API
+登入.
+
+> Example request:
+
+```bash
+curl -X POST \
+    "http://localhost/api/login" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json" \
+    -d '{"name":"molestias","password":"earum"}'
+
+```
+
+```javascript
+const url = new URL(
+    "http://localhost/api/login"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "name": "molestias",
+    "password": "earum"
+}
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+    body: body
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+
+
+### HTTP Request
+`POST api/login`
+
+#### Body Parameters
+Parameter | Type | Status | Description
+--------- | ------- | ------- | ------- | -----------
+    `name` | string |  optional  | required.
+        `password` | string |  optional  | required.
+    
+<!-- END_c3fa189a6c95ca36ad6ac4791a873d23 -->
+
+<!-- START_38bd0a8481ac8ed56bfad04acf450c57 -->
+## show API
+顯示個人資料.
+
+> Example request:
+
+```bash
+curl -X POST \
+    "http://localhost/api/user/me" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json" \
+    -d '{"remember_token":"nihil"}'
+
+```
+
+```javascript
+const url = new URL(
+    "http://localhost/api/user/me"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "remember_token": "nihil"
+}
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+    body: body
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+
+
+### HTTP Request
+`POST api/user/me`
+
+#### Body Parameters
+Parameter | Type | Status | Description
+--------- | ------- | ------- | ------- | -----------
+    `remember_token` | string |  optional  | required.
+    
+<!-- END_38bd0a8481ac8ed56bfad04acf450c57 -->
+
+<!-- START_5a5b59444cee7eb79d151113de4eec9c -->
+## resetPassword API
+重設密碼.
+
+> Example request:
+
+```bash
+curl -X POST \
+    "http://localhost/api/user/reset" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json" \
+    -d '{"reset_password":"qui","remember_token":"aperiam"}'
+
+```
+
+```javascript
+const url = new URL(
+    "http://localhost/api/user/reset"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "reset_password": "qui",
+    "remember_token": "aperiam"
+}
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+    body: body
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+
+
+### HTTP Request
+`POST api/user/reset`
+
+#### Body Parameters
+Parameter | Type | Status | Description
+--------- | ------- | ------- | ------- | -----------
+    `reset_password` | string |  optional  | required.
+        `remember_token` | string |  optional  | required.
+    
+<!-- END_5a5b59444cee7eb79d151113de4eec9c -->
 
 

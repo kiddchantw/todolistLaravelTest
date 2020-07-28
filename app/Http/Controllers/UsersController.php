@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Users;
 use Illuminate\Http\Request;
 use Session;
+use Illuminate\Support\Str;
 
 
 class UsersController extends Controller
@@ -23,17 +24,13 @@ class UsersController extends Controller
 				$user->password = $loginPassword;
 				$user->save();
 
-
 				$resultLoginInfo = Users::where('name',$loginName)->first();
 
 				$resultUserId = $resultLoginInfo->id ;
 				Session::put('resultUserId', $resultUserId);
 				Session::put('resultUserName', $loginName);
 
-
 				return back();
-
-
 				
 			case 'login2':
 
@@ -48,6 +45,20 @@ class UsersController extends Controller
 
 			if($resultUserPW == $loginPassword){
 				echo "login 成功";
+
+				do  {
+					$loginToken = Str::random(60);
+					$checkTokenExist = Users::where('remember_token', '=', $loginToken)->first();  
+				} 
+				while( $checkTokenExist );
+		
+				
+				$user = Users::where('name', '=', $loginName)->first();
+				$user->remember_token =  $loginToken;
+				$user->token_expire_time = date('Y/m/d H:i:s', time()+1*60);
+				$user->save();
+
+
 				Session::put('resultUserId', $resultUserId);
 				Session::put('resultUserName', $loginName);
 				return back();

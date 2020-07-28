@@ -130,9 +130,6 @@ class TaskApi extends Controller
         return $taskShow;
     }
 
-
-
-
     /**
      * updateTask API
      * Update the specified resource in storage
@@ -152,7 +149,6 @@ class TaskApi extends Controller
     // public function update(Request $request, $id)
     public function update(Request $request, Tasks $tasks)
     {
-
         $updateTaskId = $tasks->id;
 
         $updateTask = Tasks::where('id', '=', $updateTaskId);

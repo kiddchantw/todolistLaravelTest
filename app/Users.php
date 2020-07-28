@@ -14,6 +14,7 @@ class Users extends Authenticatable
     //
     protected $table = 'users';
 
+    protected $hidden = ['password'];
 
 
     //Eloquent: Mutators

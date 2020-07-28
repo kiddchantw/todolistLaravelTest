@@ -57,7 +57,7 @@ class LoginController extends Controller
 
             $user = Users::where('name', '=', $request->name)->first();
             $user->remember_token =  $loginToken;
-            $user->token_expire_time = date('Y/m/d H:i:s', time() + 1 * 60);
+            $user->token_expire_time = date('Y/m/d H:i:s', time() + 10 * 60);
             $user->save();
             $response = array("token" => $user->remember_token, "expire_time" => $user->token_expire_time);
         } else {
@@ -77,5 +77,10 @@ class LoginController extends Controller
         }
     }
 
-    
+    public function show(Request $request)
+    {
+        # code...
+        return $request->user();
+    }
+
 }

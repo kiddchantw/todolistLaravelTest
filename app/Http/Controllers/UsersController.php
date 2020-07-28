@@ -74,7 +74,7 @@ class UsersController extends Controller
 
 					$user = Users::where('name', '=', $loginName)->first();
 					$user->remember_token =  $loginToken;
-					$user->token_expire_time = date('Y/m/d H:i:s', time() + 1 * 60);
+					$user->token_expire_time = date('Y/m/d H:i:s', time() + 10 * 60);
 					$user->save();
 
 

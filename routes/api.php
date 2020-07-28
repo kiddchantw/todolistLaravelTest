@@ -26,6 +26,7 @@ Route::middleware(['apiLog'])->group(function () {
 
     Route::middleware(['confirmToken'])->group(function () {
         Route::post('user/me', 'Auth\LoginController@show');
+        Route::post('user/reset', 'Auth\LoginController@resetPassword');
     });
     
 });

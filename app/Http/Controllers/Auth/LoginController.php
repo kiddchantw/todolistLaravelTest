@@ -68,19 +68,46 @@ class LoginController extends Controller
     }
 
 
-    public function logout()
+    public function logout(Request $request)
     {
-        if (Auth::check()) {
-            dd("1");
-        } else {
-            dd("2");
-        }
+        // if (Auth::check()) {
+        //     dd("1");
+        // } else {
+        //     dd("2");
+        // }
+
+
+        $user = $request->user();
+        $user->remember_token = Null;
+        $user->token_expire_time = Null;
+        $user->save();
+        
+        return response()->json(['message' => "logout success!"], 200);
     }
 
     public function show(Request $request)
     {
         # code...
         return $request->user();
+    }
+
+
+    public function resetPassword (Request $request)
+    {
+        $user =  $request->user() ;
+        $user->password = $request->reset_password ;
+        $user->save();
+        return response()->json(['message' => "reset Password success!"], 200);
+    }
+
+
+    public function refreshToken(Request $request){
+        $user = $request->user();
+        $user->token_expire_time = date('Y/m/d H:i:s', time()+5*60);
+        $user->save();
+
+        $response = array("token"=>$user->remember_token , "expire_time"=> $user->token_expire_time) ;   
+        return response()->json(['message' => $response], 200);
     }
 
 }

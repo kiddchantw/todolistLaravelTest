@@ -50,17 +50,10 @@ class UsersController extends Controller
 				$resultUserId = $resultLoginInfo->id;
 				$resultUserPW = $resultLoginInfo->password;
 
-				//等reset pw寫好再改這隻
-				$conditionK = false;
-				if ($resultUserId >= 4) {
+				
 
-					$conditionK = Hash::check($loginPassword, $resultUserPW);
-				} else {
-					if ($resultUserPW == $loginPassword) {
-						$conditionK = true;
-					}
-				}
-				//
+				$conditionK = Hash::check($loginPassword, $resultUserPW);
+			
 
 				if ($conditionK) {
 					echo "login 成功";

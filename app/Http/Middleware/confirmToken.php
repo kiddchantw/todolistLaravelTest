@@ -43,4 +43,5 @@ class confirmToken
             return response()->json(['message' => 'User Token ?'], 404);
         }
     }
+    
 }

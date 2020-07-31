@@ -1,0 +1,22 @@
+@startuml
+
+(*)-->[with name & passowrd]"login"
+' -->[ with token ]"logout"
+
+if "user exist" then
+--> [token]"edit /show user info/reset pw"
+' -->[Ending process] (*)
+-right-> (*)
+
+else  
+-> [token]"logout"
+-right-> (*)
+
+
+else  
+-> [token]"add task"
+-> [token]"update/delete task"
+-->(*)
+
+
+@enduml

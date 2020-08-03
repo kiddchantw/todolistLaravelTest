@@ -1,11 +1,9 @@
 @startuml
 
 (*)-->[with name & passowrd]"login"
-' -->[ with token ]"logout"
 
 if "user exist" then
 --> [token]"edit /show user info/reset pw"
-' -->[Ending process] (*)
 -right-> (*)
 
 else  

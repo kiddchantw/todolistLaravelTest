@@ -87,15 +87,15 @@ fetch data from controller / api
     <summary> demo gif </summary>
     <pre><code>
     
-    ## add : success & error( id error/ content error)
+    ## add : success & error ( id error/ content error)
 
     ![image](https://github.com/kiddchantw/todolistLaravelTest/blob/master/public/C.gif?raw=true)
 
-    ## update : success & error( id error )
+    ## update : success & error ( id error )
 
     ![image](https://github.com/kiddchantw/todolistLaravelTest/blob/master/public/u.gif?raw=true)
 
-    ## delete : success & error( id error )
+    ## delete : success & error ( id error )
 
     ![image](https://github.com/kiddchantw/todolistLaravelTest/blob/master/public/d.gif?raw=true)
 
@@ -105,7 +105,11 @@ fetch data from controller / api
 
 # Deploy : GCP 
 - [x] Ubuntu 20.04 / Apache 
-- [ ] Ubuntu 20.04 / Nginx
+    - [x] http
+    - [x] https
+- [x] Ubuntu 20.04 / Nginx  1.18.0
+    - [x] http
+    - [ ] https
 - [ ] centOS / Apache 
 - [ ] centOS / Nginx
 

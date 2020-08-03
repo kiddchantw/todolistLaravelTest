@@ -50,10 +50,8 @@ class UsersController extends Controller
 				$resultUserId = $resultLoginInfo->id;
 				$resultUserPW = $resultLoginInfo->password;
 
-				
-
 				$conditionK = Hash::check($loginPassword, $resultUserPW);
-			
+				
 
 				if ($conditionK) {
 					echo "login 成功";

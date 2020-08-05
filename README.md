@@ -109,7 +109,7 @@ fetch data from controller / api
     - [x] https
 - [x] Ubuntu 20.04 / Nginx  1.18.0
     - [x] http
-    - [ ] https
+    - [x] https
 - [ ] centOS / Apache 
 - [ ] centOS / Nginx
 

@@ -38,7 +38,8 @@ jobs:
       run: chmod 600 $HOME/secrets/key
     #
     - name: ssh
-      run: ssh -o StrictHostKeyChecking=no -i $HOME/secrets/key kiddchan@35.194.231.213 "cd /var/www/html/test02/;git pull"  
+      run: ssh -o StrictHostKeyChecking=no -i $HOME/secrets/key kiddchan@35.194.231.213 
+      #"cd /var/www/html/test02/;git pull"  
     
     #- name: ssh2
     #  run: ssh -i ~/.ssh/google_compute_engine kiddchan@35.194.231.213

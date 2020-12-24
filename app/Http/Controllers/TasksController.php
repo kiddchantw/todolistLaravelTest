@@ -40,7 +40,13 @@ class TasksController extends Controller
 
 	public static function readTask($id)
 	{
-		$taskShow = Tasks::where('user_id','=',$id)->get();
+		$taskShow = Tasks::where('user_id','=',$id)->get();//->toArray();
+		return $taskShow;
+	}
+
+	public static function readTaskById($id)
+	{
+		$taskShow = Tasks::where('id','=',$id)->first();//->content
 		return $taskShow;
 	}
 

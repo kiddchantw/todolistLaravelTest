@@ -1,5 +1,6 @@
 <?php
 
+use App\Tasks;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,7 +23,9 @@ Route::get('/todolist', 'Controller@todolistIndex');
 
 Route::post('/todolistLogin', 'UsersController@loginTest');
 Route::post('/todolistAddTask', 'TasksController@addTask');
-Route::post('/readTask/{id}', 'TasksController@readTask');
+Route::get('/readTask/{id}', 'TasksController@readTask');
+Route::get('/readTaskById/{id}', 'TasksController@readTaskById');
+
 
 Route::post('updateTask', 'TasksController@updateTask')->name('updateTask.post');
 Route::post('deleteTask', 'TasksController@deleteTask')->name('delete.post');
@@ -36,3 +39,9 @@ Route::post('deleteTask', 'TasksController@deleteTask')->name('delete.post');
 // Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+
+Route::get('/first',function(){
+    // echo Tasks::all()->first();
+    echo Tasks::find(1)->count();
+});

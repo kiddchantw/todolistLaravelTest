@@ -50,8 +50,7 @@ class TaskApi extends Controller
      */
     public function store(Request $request)
     {
-
-        ////m1 ok
+             ////m1 ok
         // $validator = Validator::make($request->all(), [
         //     'user_id' => 'required|integer',
         //     'content' => 'required|string'
@@ -108,7 +107,7 @@ class TaskApi extends Controller
             // 如果已經用validator 還會有狀況嗎？
 
             //
-
+        
 
     }
 

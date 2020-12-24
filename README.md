@@ -1,5 +1,5 @@
 # Todolist 
-a todolist project with PHP/Laravel
+a todolist project with PHP/Laravel for demo
 
 
 ##  Database 

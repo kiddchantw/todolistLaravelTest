@@ -11,7 +11,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
-
+use Illuminate\Support\Facades\Log;
 
 /**
  * @group user Login 
@@ -63,6 +63,7 @@ class LoginController extends Controller
      */
     public function login(Request $request)
     {
+        Log::inifo('start login');
         $credentials = $request->only('name', 'password');
         if (Auth::attempt($credentials)) {
             do {
@@ -78,6 +79,8 @@ class LoginController extends Controller
         } else {
             $response = "login error";
         }
+        Log::inifo($response);
+
 
         return response()->json(['message' => $response], 200);
     }

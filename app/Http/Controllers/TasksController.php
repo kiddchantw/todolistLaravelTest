@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Tasks;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use Session;
-use Log;
 // use App\Http\Requests;
 // use App\Http\Requests\Request;
 

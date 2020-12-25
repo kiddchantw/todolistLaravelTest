@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Hash;
 
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 
 class UsersController extends Controller
 {
@@ -39,6 +40,8 @@ class UsersController extends Controller
 				Session::put('resultUserId', $resultUserId);
 				Session::put('resultUserName', $loginName);
 
+				Log::info('註冊 new'.$loginName);
+
 				return back();
 
 			case 'login2':
@@ -51,10 +54,14 @@ class UsersController extends Controller
 				$resultUserPW = $resultLoginInfo->password;
 
 				$conditionK = Hash::check($loginPassword, $resultUserPW);
+
+
+
 				
 
 				if ($conditionK) {
-					echo "login 成功";
+					
+
 
 					do {
 						$loginToken = Str::random(60);
@@ -71,8 +78,13 @@ class UsersController extends Controller
 
 					Session::put('resultUserId', $resultUserId);
 					Session::put('resultUserName', $loginName);
+
+					// echo "login 成功";
+					Log::info('login 成功');
 					return back();
 				} else {
+					Log::info("login 失敗  .$loginName ");
+
 					echo "login 失敗";
 				}
 
